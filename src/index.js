@@ -20,7 +20,7 @@
      * @arg {Array} arr 初始构造数据
      */
  	function prioityQueue(cmp, arr) {
- 		op['arr'] = arr || [];
+ 		op['arr'] = arr || [];1
  		op['cmp'] = cmp || function (a, b) { return a < b;};
  		length = op['arr'].length;
  		heap = [null].concat(op['arr']);
@@ -52,7 +52,7 @@
  		var l = length,
  			p,
  			tSwap;
- 		for ( var i = l; i>0; i = parseInt(i/2) ) {
+ 		for ( var i = l; i>1; i = parseInt(i/2) ) {
  			p = parseInt(i/2);
  			if ( op.cmp( heap[i], heap[p] ) ) {
  				tSwap = heap[i];
@@ -77,7 +77,13 @@
  		heap.pop();
  		length--;
  		queueAdjustTop(1, length);
- 		if (length==0) heap = [null];
+ 		if (length<=0) {
+ 			heap = [null];
+ 		}
+ 		if (length<0) {
+ 			length = 0;
+ 			console.warn('heap is empty!');
+ 		}
  		console.log('Heap Poped', heap);
  	}
 
@@ -112,9 +118,12 @@
  */
  (function () {
 
- 	var q = new prioityQueue(function (a, b) { return a < b;}, [5,7,9,2,2,4,6,1,4]);
+ 	var q = new prioityQueue(function (a, b) { return a < b;}, [5,4]);
  	q.push(8);
  	q.push(0);
+ 	q.pop();
+ 	q.pop();
+ 	q.pop();
  	q.pop();
  	q.pop();
  	console.log(q.top());
