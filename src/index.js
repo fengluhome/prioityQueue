@@ -120,7 +120,11 @@
 
  	var q = new prioityQueue(function (a, b) { return a < b;}, [5,4]);
  	q.push(8);
- 	q.push(0);
+ 	q.push(7);
+ 	q.push(6);
+ 	q.push(3);
+ 	q.push(2);
+ 	q.push(1);
  	q.pop();
  	q.pop();
  	q.pop();
